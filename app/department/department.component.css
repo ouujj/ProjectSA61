@@ -1,0 +1,71 @@
+
+table {
+  width: 100%;
+  color: aliceblue;
+  margin-left: auto;
+  margin-right: auto;
+}
+.mat-elevation-z8{
+  color: aliceblue;
+
+
+}
+.input{
+  tab-size: 25px;
+}
+
+.adds{
+  text-align: center;
+
+  font-size: 22px;
+
+}
+.accordion {
+  background-color: #eee;
+  color: #444;
+  cursor: pointer;
+  padding: 22px;
+  width: 100%;
+  text-align: left;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  font-size: 22px;
+}
+
+.active, .accordion:hover {
+  background-color: sandybrown;
+}
+
+.panel {
+  padding: 0 25px;
+  background-color: white;
+  display: none;
+  overflow: hidden;
+}
+
+.mat-figure{
+
+  align-items: initial;
+
+
+}
+.AddressInput{
+
+  width: 50%;
+}
+.save{
+  float: right;
+}
+p{
+  text-align: center;
+  font-size:22px;
+}
+.reson{
+  width: 45%;
+
+}
+.save{
+  float: right;
+}
+
