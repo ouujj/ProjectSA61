@@ -10,12 +10,12 @@ import java.util.*;
 public class department {
     @Id()
     @GeneratedValue
+
     private  @NonNull Long deploy_id;
     private  @NonNull String deploy_name;
     private  @NonNull int  member;
 
-    @OneToMany(mappedBy="Departments")
-    private List<Job_position> positions = new ArrayList<>() ;
+
 
     protected department(){}
 

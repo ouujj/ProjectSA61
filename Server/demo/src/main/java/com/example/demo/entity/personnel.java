@@ -17,12 +17,6 @@ public class personnel {
     private  @NonNull String ssid;
     private  @NonNull String birthday;
 
-    @OneToMany(mappedBy="Records")
-    private List<job_record> jrord = new ArrayList<>();
-
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name="pos_id")
-    private  Job_position Position;
 
     protected personnel(){}
 

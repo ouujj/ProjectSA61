@@ -8,19 +8,19 @@ import java.util.*;
 public class job_record {
     @Id
     @GeneratedValue
-    private  @NonNull Long id;
     private  @NonNull String time;
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
     @JoinColumn(name="personid")
-    private  job_record Records;
+    private personnel person  ;
+
 
     protected job_record(){}
 
-    public job_record(String time){
+    public job_record(String time , personnel person){
 
         this.time=time;
-
+        this.person=person;
 
     }
 
