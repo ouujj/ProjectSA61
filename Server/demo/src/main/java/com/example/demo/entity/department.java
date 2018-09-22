@@ -13,7 +13,7 @@ public class department {
 
     private  @NonNull Long deploy_id;
     private  @NonNull String deploy_name;
-    private  @NonNull int  member;
+    private   int  member;
 
 
 

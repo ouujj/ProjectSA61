@@ -9,6 +9,7 @@ import { MatButtonModule, MatCardModule, MatInputModule, MatListModule, MatToolb
 import { MatGridListModule, MatTableModule, MatTabsModule, MatSelectModule, MatIconModule} from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+
 import { RouterModule, Routes } from '@angular/router';
 import { HRComponent } from './hr/hr.component';
 import { DepartmentComponent } from './department/department.component';

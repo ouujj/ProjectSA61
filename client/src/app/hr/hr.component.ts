@@ -1,5 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material';
+import {HttpClient} from '@angular/common/http';
+
+export interface PeriodicElement {
+
+  personid: string;
+  name: string;
+  email: string;
+  phone: string;
+}
 
 @Component({
   selector: 'app-hr',
@@ -8,19 +17,41 @@ import {MatTableDataSource} from '@angular/material';
 })
 export class HRComponent implements OnInit {
 
-  displayedColumns: string[] = ['codenum', 'name', 'depart', 'phone'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['personid', 'name', 'email', 'phone'];
+  dataSource = new MatTableDataSource();
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  constructor(private http: HttpClient) { }
 
-
-
-
-  constructor() { }
 
   ngOnInit() {
+    const ELEMENT_DATA: PeriodicElement[] = [];
+
+    this.http.get("http://localhost:8080/persons").subscribe(
+      data => {
+        console.log("GET Request is successful ", data);
+        for (let index = 0; index < data["length"]; index++) {
+          ELEMENT_DATA.push({
+            personid: data[index].personid,
+            name: data[index].name,
+            phone: data[index].phone,
+            email: data[index].email
+
+          })
+
+
+        }
+        //console.log(ELEMENT_DATA);
+        this.dataSource = new MatTableDataSource(ELEMENT_DATA);
+      },
+      error => {
+        console.log("Error", error);
+      }
+
+    );
+
 
 
 
@@ -28,20 +59,8 @@ export class HRComponent implements OnInit {
   }
 
 }
-export interface PeriodicElement {
-  codenum: string;
-  name: string;
-  depart: string;
-  phone: string;
-}
 
 
-const ELEMENT_DATA: PeriodicElement[] = [
-  {phone: '0888888888', codenum: 'b5900', name: 'Mo', depart: 'cpe'},
-  {phone: '0899999999', codenum: 'b5901', name: 'MAY', depart: 'cpe'},
-  {phone: '0877777777', codenum: 'b5902', name: 'MAI', depart: 'cpe'},
-  {phone: '0866666666', codenum: 'b5903', name: 'MING', depart : 'cpe'},
-  {phone: '0855555555', codenum: 'b5904', name: 'MoNG', depart : 'cpe'},
 
-];
+
 
