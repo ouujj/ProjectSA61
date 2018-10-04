@@ -2,37 +2,36 @@
 <section><br>
   <button class="accordion"> เพิ่มพนักงาน</button>
   <div class="panel">
-    <form>
+    <form >
 
       <mat-form-field  >
-        ชื่อ - นามสกุล : <input matInput>
+        ชื่อ - นามสกุล : <input matInput [(ngModel)]="person_name" type="text" [ngModelOptions]="{standalone: true}">
       </mat-form-field><br>
 
       <mat-form-field class="AddressInput">
-        ที่อยู ่: <input matInput>
+        ที่อยู ่: <input matInput [(ngModel)]="person_address" type="text" [ngModelOptions]="{standalone: true}" >
       </mat-form-field><br>
 
       <mat-form-field  >
-        วันเกิด : <input matInput>
+        วันเกิด : <input matInput [(ngModel)]="person_birthday" type="text" [ngModelOptions]="{standalone: true}"  >
       </mat-form-field><br>
 
       <mat-form-field>
-        โทรศัพท์มืถือ : <input matInput>
+        โทรศัพท์มืถือ : <input matInput [(ngModel)]="person_phone" type="text"  [ngModelOptions]="{standalone: true}" >
       </mat-form-field><br>
       <mat-form-field>
 
-        E-mail : <input matInput>
+        E-mail : <input matInput [(ngModel)]="person_email" type="text" [ngModelOptions]="{standalone: true}" >
       </mat-form-field><br>
       <mat-form-field>
 
-        เลขที่ประกันสังคม : <input matInput>
+        เลขที่ประกันสังคม : <input matInput [(ngModel)]="person_ssid" type="text" [ngModelOptions]="{standalone: true}" >
       </mat-form-field><br>
       <mat-form-field >
         ผู้ยืนยัน<input matInput>
       </mat-form-field><br><br>
-      <button mat-stroked-button color="primary" class="save" >บันทึก</button><br><br>
+      <button   mat-stroked-button  color="primary" class="save"  (click)= "Addp()">บันทึก</button><br><br>
     </form>
-
 
 
 <br>
@@ -92,7 +91,7 @@
       <mat-form-field >
         ผู้ยืนยัน<input matInput>
       </mat-form-field><br><br>
-      <button mat-stroked-button color="primary" class="save" >ยืนยัน</button><br><br>
+      <button mat-stroked-button    color="primary" class="save" >ยืนยัน</button><br><br>
     </form>
   </div>
 

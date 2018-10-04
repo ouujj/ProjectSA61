@@ -14,12 +14,12 @@ import java.util.Collection;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.CrossOrigin;
-
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @RequestMapping("/persons")
  class personController {
-    private Personrepos repository;
+    @Autowired private Personrepos repository;
 
     public  personController(Personrepos repository){
 
@@ -34,9 +34,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
     }
 
     @PostMapping()
-    public personnel AddPerson(@Valid @RequestBody personnel body){
-        return   repository.save(body);
+    @CrossOrigin(origins = "*")
+    public personnel AddPerson(@RequestBody personnel body){
+
+        return repository.save(body);
     }
+
 
     @DeleteMapping("/{id}")
     public  boolean deletePerson(@PathVariable("personid") Long id) {
@@ -50,13 +53,8 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
     @PutMapping("/{id}")
     public  personnel updatePerson(@PathVariable("personid") Long id, @Valid @RequestBody personnel body) {
-        body.setPersonid(id);
+
        return repository.save(body);
     }
-
-
-
-
-
 
 }

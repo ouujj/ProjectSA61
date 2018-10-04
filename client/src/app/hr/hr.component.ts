@@ -17,8 +17,9 @@ export interface PeriodicElement {
 })
 export class HRComponent implements OnInit {
 
-  displayedColumns: string[] = ['personid', 'name', 'email', 'phone'];
+  displayedColumns: string[] = ['personid','name', 'email', 'phone'];
   dataSource = new MatTableDataSource();
+
   applyFilter(filterValue: string) {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
@@ -34,10 +35,11 @@ export class HRComponent implements OnInit {
         console.log("GET Request is successful ", data);
         for (let index = 0; index < data["length"]; index++) {
           ELEMENT_DATA.push({
-            personid: data[index].personid,
-            name: data[index].name,
-            phone: data[index].phone,
-            email: data[index].email
+
+            personid : data[index].personid,
+            name     : data[index].name,
+            phone    : data[index].phone,
+            email    : data[index].email
 
           })
 
@@ -51,9 +53,6 @@ export class HRComponent implements OnInit {
       }
 
     );
-
-
-
 
 
   }

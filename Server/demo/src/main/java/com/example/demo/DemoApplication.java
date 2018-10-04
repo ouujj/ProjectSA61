@@ -3,9 +3,6 @@ package com.example.demo;
 import com.example.demo.respository.*;
 import com.example.demo.entity.*;
 
-
-
-
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.ApplicationRunner;

@@ -1,6 +1,5 @@
 package com.example.demo.controller;
 
-
 import com.example.demo.respository.departmentrepos;
 import com.example.demo.entity.department;
 
@@ -23,6 +22,5 @@ class DepartmentController {
         return repository.findAll().stream()
                 .collect(Collectors.toList());
     }
-
 
 }
