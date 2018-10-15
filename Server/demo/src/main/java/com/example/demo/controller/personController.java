@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/persons")
+
  class personController {
     @Autowired private Personrepos repository;
 
@@ -27,34 +29,38 @@ import org.springframework.beans.factory.annotation.Autowired;
     }
 
     @GetMapping()
-    @CrossOrigin(origins = "http://localhost:4200")
+
     public Collection<personnel> personnel() {
         return repository.findAll().stream()
                 .collect(Collectors.toList());
     }
 
     @PostMapping()
-    @CrossOrigin(origins = "*")
+
     public personnel AddPerson(@RequestBody personnel body){
 
         return repository.save(body);
     }
 
 
-    @DeleteMapping("/{id}")
-    public  boolean deletePerson(@PathVariable("personid") Long id) {
+    @DeleteMapping("delete/{id}")
+    public  boolean deletePerson(@PathVariable  Long id) {
         try {
           repository.deleteById(id);
+
+
             return true;
         }catch (Exception e) {
             return false;
         }
     }
 
-    @PutMapping("/{id}")
-    public  personnel updatePerson(@PathVariable("personid") Long id, @Valid @RequestBody personnel body) {
+       @PutMapping("update/{id}")
+    public  personnel updatePerson(@Valid @RequestBody personnel body) {
 
-       return repository.save(body);
+
+
+        return repository.save(body);
     }
 
 }

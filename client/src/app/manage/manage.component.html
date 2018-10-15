@@ -17,7 +17,7 @@
       </mat-form-field><br>
 
       <mat-form-field>
-        โทรศัพท์มืถือ : <input matInput [(ngModel)]="person_phone" type="text"  [ngModelOptions]="{standalone: true}" >
+        โทรศัพท์มือถือ  : <input matInput [(ngModel)]="person_phone" type="text"  [ngModelOptions]="{standalone: true}" >
       </mat-form-field><br>
       <mat-form-field>
 
@@ -32,6 +32,10 @@
       </mat-form-field><br><br>
       <button   mat-stroked-button  color="primary" class="save"  (click)= "Addp()">บันทึก</button><br><br>
     </form>
+
+
+
+
 
 
 <br>
@@ -75,12 +79,16 @@
   </div>
 
 
+
+
+
+
 <br>
   <button class="accordion"> ลดพนักงาน</button>
   <div class="panel">
     <form>
       <br>
-      <input matInput  placeholder="รหัสพนักงาน">
+      <input matInput  placeholder="รหัสพนักงาน"  matInput [(ngModel)]="person_id" type="long" [ngModelOptions]="{standalone: true}" >
 
       <mat-form-field class="AddressInput">
         สาเหตุ: <input matInput>
@@ -91,7 +99,7 @@
       <mat-form-field >
         ผู้ยืนยัน<input matInput>
       </mat-form-field><br><br>
-      <button mat-stroked-button    color="primary" class="save" >ยืนยัน</button><br><br>
+      <button mat-stroked-button   (click)= "Delp()" color="primary" class="save" >ยืนยัน</button><br><br>
     </form>
   </div>
 

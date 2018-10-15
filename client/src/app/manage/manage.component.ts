@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpHeaders} from '@angular/common/http';
 import {HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from "@angular/core";
 import { Observable } from  "rxjs" ;
@@ -13,12 +12,15 @@ import { Observable } from  "rxjs" ;
 })
 export class ManageComponent implements OnInit {
 
-    private  person_name: string;
-    private  person_address: string;
+
+    private person_id: number;
+    private person_name: string;
+    private person_address: string;
     private person_birthday: string;
     private person_phone: string;
     private person_email: string;
     private person_ssid: string;
+
 
 
 
@@ -29,7 +31,7 @@ export class ManageComponent implements OnInit {
   ){}
 
   Addp() {
-    this.Addperson(this.person_name,this.person_address,this.person_birthday,this.person_email,this.person_phone,this.person_ssid).subscribe(data => {
+    this.Addperson(this.person_name,this.person_address,this.person_birthday,this.person_phone,this.person_email,this.person_ssid).subscribe(data => {
       console.log( "POST Success" , data) ;
 
   },error =>{
@@ -37,6 +39,22 @@ export class ManageComponent implements OnInit {
     })
   }
 
+  Delp() {
+
+    this.httpClient.delete('http://localhost:8080/persons/delete/' + this.person_id)
+      .subscribe(
+        data => {
+          alert('ลบเรียบร้อย');
+          console.log('delete Request is successful', data);
+
+        },
+        error => {
+          console.log('Rrror', error);
+          alert('ไม่สามารถลบได้ server ผิดพลาดหรือไม่มีข้อมูล');
+        }
+      );
+
+  }
 
 
 
@@ -76,12 +94,11 @@ export class ManageComponent implements OnInit {
      "ssid":person_ssid,
      "birthday":person_birthday
 
-
-
-
-
-
     });
   }
 
-}
+
+
+
+  }
+

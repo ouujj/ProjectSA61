@@ -13,9 +13,11 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.Collection;
 import java.util.stream.Collectors;
 import org.springframework.web.bind.annotation.*;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/Positions")
 class JobPositionController {
 
@@ -32,7 +34,10 @@ class JobPositionController {
                 .collect(Collectors.toList());
     }
 
-
+    @PostMapping()
+    public Job_position  position(@RequestBody  Job_position body){
+        return repository.save(body);
+    }
 
 
 

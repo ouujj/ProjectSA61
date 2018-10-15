@@ -17,7 +17,7 @@ export interface PeriodicElement {
 })
 export class HRComponent implements OnInit {
 
-  displayedColumns: string[] = ['personid','name', 'email', 'phone'];
+  displayedColumns: string[] = ['personid','name', 'phone', 'email'];
   dataSource = new MatTableDataSource();
 
   applyFilter(filterValue: string) {
@@ -38,8 +38,8 @@ export class HRComponent implements OnInit {
 
             personid : data[index].personid,
             name     : data[index].name,
-            phone    : data[index].phone,
-            email    : data[index].email
+            email    : data[index].email,
+            phone    : data[index].phone
 
           })
 
