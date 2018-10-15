@@ -22,6 +22,10 @@ export class ManageComponent implements OnInit {
     private person_ssid: string;
 
 
+
+
+
+
   constructor(
     private httpClient: HttpClient
   ){}
@@ -29,9 +33,11 @@ export class ManageComponent implements OnInit {
   Addp() {
     this.Addperson(this.person_name,this.person_address,this.person_birthday,this.person_phone,this.person_email,this.person_ssid).subscribe(data => {
       console.log( "POST Success" , data) ;
+      alert('เพิ่มเรียบร้อย');
 
   },error =>{
       console.log("Fail Success", error);
+      alert('ไม่สามารถแก้ไขได้ server ผิดพลาดหรือไม่มีข้อมูล');
     })
   }
 
@@ -43,6 +49,7 @@ export class ManageComponent implements OnInit {
           alert('ลบเรียบร้อย');
           console.log('delete Request is successful', data);
 
+
         },
         error => {
           console.log('Rrror', error);
@@ -51,19 +58,24 @@ export class ManageComponent implements OnInit {
       );
 
   }
-  public Addperson(  person_name: string, person_address: string,  person_birthday: string,
-                     person_phone: string, person_email: string, person_ssid: string ) : Observable <any>{
-    return  this.httpClient.post('//localhost:8080/persons',{
 
-      "name":person_name,
-      "phone":person_phone,
-      "addrees":person_address,
-      "email":person_email,
-      "ssid":person_ssid,
-      "birthday":person_birthday
+  Update(){
 
-    });
+    this.UpdateInfo(this.person_id,this.person_name,this.person_address,this.person_birthday,this.person_phone,this.person_email,this.person_ssid).subscribe(data => {
+      console.log( "Update Success" , data) ;
+      alert('แก้ไขเรียบร้อย');
+
+    },error =>{
+      console.log("Fail Success", error);
+      alert('ไม่สามารถแก้ไขได้ server ผิดพลาดหรือไม่มีข้อมูล');
+
+    })
+
+
+
+
   }
+
 
 
 
@@ -90,6 +102,36 @@ export class ManageComponent implements OnInit {
       });
     }
   }
+
+  public Addperson(  person_name: string, person_address: string,  person_birthday: string,
+                     person_phone: string, person_email: string, person_ssid: string ) : Observable <any>{
+    return  this.httpClient.post('//localhost:8080/persons',{
+
+      "name":person_name,
+     "phone":person_phone,
+     "addrees":person_address,
+     "email":person_email,
+     "ssid":person_ssid,
+     "birthday":person_birthday
+
+    });
+  }
+  public UpdateInfo( person_id: number, person_name: string, person_address: string,  person_birthday: string,
+                      person_phone: string, person_email: string, person_ssid: string ) : Observable <any>{
+    return  this.httpClient.put('//localhost:8080/persons/update',{
+
+      "personid":person_id,
+      "name":person_name,
+      "phone":person_phone,
+      "addrees":person_address,
+      "email":person_email,
+      "ssid":person_ssid,
+      "birthday":person_birthday
+
+    });
+  }
+
+
 
 
   }
