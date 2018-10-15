@@ -22,10 +22,6 @@ export class ManageComponent implements OnInit {
     private person_ssid: string;
 
 
-
-
-
-
   constructor(
     private httpClient: HttpClient
   ){}
@@ -55,7 +51,19 @@ export class ManageComponent implements OnInit {
       );
 
   }
+  public Addperson(  person_name: string, person_address: string,  person_birthday: string,
+                     person_phone: string, person_email: string, person_ssid: string ) : Observable <any>{
+    return  this.httpClient.post('//localhost:8080/persons',{
 
+      "name":person_name,
+      "phone":person_phone,
+      "addrees":person_address,
+      "email":person_email,
+      "ssid":person_ssid,
+      "birthday":person_birthday
+
+    });
+  }
 
 
 
@@ -82,22 +90,6 @@ export class ManageComponent implements OnInit {
       });
     }
   }
-
-  public Addperson(  person_name: string, person_address: string,  person_birthday: string,
-                     person_phone: string, person_email: string, person_ssid: string ) : Observable <any>{
-    return  this.httpClient.post('//localhost:8080/persons',{
-
-      "name":person_name,
-     "phone":person_phone,
-     "addrees":person_address,
-     "email":person_email,
-     "ssid":person_ssid,
-     "birthday":person_birthday
-
-    });
-  }
-
-
 
 
   }
