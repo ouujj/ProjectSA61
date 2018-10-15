@@ -55,12 +55,19 @@ import org.springframework.beans.factory.annotation.Autowired;
         }
     }
 
-       @PutMapping("update/{id}")
-    public  personnel updatePerson(@Valid @RequestBody personnel body) {
+       @PutMapping("update")
+    public  personnel updatePerson(@RequestBody personnel body) {
 
 
+
+        if( repository.findById(body.getPersonid()).get() != null )
 
         return repository.save(body);
+
+        else return null;
     }
 
+
+
 }
+

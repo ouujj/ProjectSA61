@@ -23,6 +23,11 @@ export class RecordComponent implements OnInit {
   }
 
 
+
+
+
+
+
   constructor() {
 
   }
@@ -31,6 +36,13 @@ export class RecordComponent implements OnInit {
   }
 
 }
+
+
+
+
+
+
+
 
 export interface PeriodicElement {
   name: string;
