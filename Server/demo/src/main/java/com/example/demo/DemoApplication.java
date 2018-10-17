@@ -18,5 +18,16 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
+	@Bean
+	ApplicationRunner init(departmentrepos Departmentrepos) {
+		return args -> {
+
+			Departmentrepos.save(new department("ขาย"));
+			Departmentrepos.save(new department("จัดของ"));
+			Departmentrepos.save(new department("ส่งของ"));
+			Departmentrepos.findAll().forEach(System.out::println);
+		};
+	}
+
 }
 

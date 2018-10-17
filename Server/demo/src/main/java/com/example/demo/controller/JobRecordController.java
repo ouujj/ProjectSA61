@@ -1,7 +1,13 @@
 package com.example.demo.controller;
 
-        import com.example.demo.respository.jobrecordrepos;
-        import com.example.demo.entity.job_record;
+        import com.example.demo.respository.*;
+        import com.example.demo.entity.*;
+
+        import java.util.Collection;
+        import java.util.Optional;
+        import java.util.Map;
+        import javax.validation.Valid;
+        import java.util.Date;
 
         import org.springframework.http.MediaType;
         import org.springframework.web.bind.annotation.GetMapping;
@@ -17,7 +23,10 @@ package com.example.demo.controller;
 @RequestMapping("/Records")
 
 class JobRecordController {
-    private  jobrecordrepos repository;
+
+    @Autowired  private  jobrecordrepos repository;
+    @Autowired private Personrepos personRepository;
+
 
     public JobRecordController(jobrecordrepos repository){
         this.repository=repository;
@@ -30,8 +39,15 @@ class JobRecordController {
     }
 
     @PostMapping()
-    public  job_record  Record(@RequestBody  job_record body){
-        return repository.save(body);
+    public  job_record  Record(job_record newrecord ,@RequestBody  Map<String,Object> body){
+
+
+        Optional<personnel> person = personRepository.findById(Long.valueOf(body.get("person").toString()));
+
+        newrecord.setPerson(person.get());
+        newrecord.setTime(new Date());
+        return repository.save(newrecord);
+
     }
 
 

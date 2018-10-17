@@ -9,20 +9,14 @@ import java.util.*;
 
 public class department {
     @Id()
-    @GeneratedValue
-
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private  @NonNull Long deploy_id;
     private  @NonNull String deploy_name;
-    private   int  member;
-
-
 
     protected department(){}
 
-    public department( String deploy_name,int  member){
-        this.member=member;
+    public department( String deploy_name){
         this.deploy_name=deploy_name;
-
     }
 }
 

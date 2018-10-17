@@ -43,12 +43,14 @@ export class ManageComponent implements OnInit {
 
   Delp() {
 
-    this.httpClient.delete('http://localhost:8080/persons/delete/' + this.person_id)
+    this.httpClient.delete('http://localhost:8080/persons/delete/'+this.person_id)
       .subscribe(
         data => {
-          alert('ลบเรียบร้อย');
-          console.log('delete Request is successful', data);
-
+          if(data) {
+            alert('ลบเรียบร้อย');
+            console.log('delete Request is successful', data);
+          }
+          else console.log('Rrror',  data);
 
         },
         error => {

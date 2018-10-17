@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
-import com.example.demo.respository.Personrepos;
-import com.example.demo.entity.personnel;
+import com.example.demo.respository.*;
+import com.example.demo.entity.*;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -46,7 +46,9 @@ import org.springframework.beans.factory.annotation.Autowired;
     @DeleteMapping("delete/{id}")
     public  boolean deletePerson(@PathVariable  Long id) {
         try {
-          repository.deleteById(id);
+
+            repository.deleteById(id);
+
 
 
             return true;
@@ -58,10 +60,7 @@ import org.springframework.beans.factory.annotation.Autowired;
        @PutMapping("update")
     public  personnel updatePerson(@RequestBody personnel body) {
 
-
-
         if( repository.findById(body.getPersonid()).get() != null )
-
         return repository.save(body);
 
         else return null;

@@ -10,21 +10,23 @@ import java.util.Date;
 @Table(name="job_record")
 
 public class job_record {
+
     @Id
     @GeneratedValue
-    private  @NonNull String transection;
-    private  @NonNull String time;
+    private  @NonNull Long transection;
+    private  @NonNull Date time;
+
     @ManyToOne(fetch = FetchType.LAZY   , cascade = CascadeType.ALL)
     @JoinColumn(name="personid")
     private personnel person  ;
 
-    private Date date = new Date();
+
 
     protected job_record(){}
 
-    public job_record(String transection , personnel person,Date date){
+    public job_record(Long transection , personnel person){
 
-        this.time=date.toString();
+        this.time= new Date();
         this.transection=transection;
         this.person=person;
 

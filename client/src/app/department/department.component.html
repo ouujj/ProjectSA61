@@ -36,21 +36,34 @@
   </table>
 
 
+
+
+
 <section>
   <br><br>
   <button class="accordion"> เปลี่ยนแผนก</button>
   <div class="panel">
     <form>
   <mat-form-field >
-    รหัสพนักงาน<input matInput>
+    รหัสพนักงาน<input matInput [(ngModel)]="person_id" type="number" [ngModelOptions]="{standalone: true}">
   </mat-form-field><br>
+
+      <mat-form-field>
+        <mat-select placeholder="แผนกใหม่"   [(ngModel)]="deployid" type="number" [ngModelOptions]="{standalone: true}" >
+          <mat-option *ngFor="let  Department of departments"  [value]="Department.department_id"  >
+            {{Department.department_name}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <br>
+
+
+
   <mat-form-field >
-    แผนกใหม่<input matInput>
-  </mat-form-field><br>
-  <mat-form-field >
-    ผู้ยืนยัน<input matInput>
+    ผู้ยืนยัน<input matInput >
   </mat-form-field><br><br>
-  <button mat-stroked-button color="primary" class="adds" class="save">บันทึก</button><br><br>
+  <button mat-stroked-button color="primary" class="adds"   (click)= "changedeploy()">บันทึก</button><br><br>
 </form>
   </div>
 
